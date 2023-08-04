@@ -1,0 +1,7 @@
+{"properties": [
+  {
+    "name": "security.disable.csrf",
+    "type": "java.lang.String",
+    "description": "Flag that controlls csrf employment"
+  }
+]}

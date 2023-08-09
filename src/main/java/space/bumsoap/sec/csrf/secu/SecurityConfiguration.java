@@ -11,9 +11,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class SecurityConfiguration implements WebMvcConfigurer {
 
-	@Value("${security.disable.csrf}")
-	private boolean csrfDIsabled;
-
 	// @formatter:off
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -21,9 +18,6 @@ public class SecurityConfiguration implements WebMvcConfigurer {
 					authorize -> authorize
 						.requestMatchers("/", "/**").permitAll())
 			  .formLogin(form -> form.loginPage("/login"));
-		if (csrfDIsabled) {
-			http.csrf(fn -> fn.disable());
-		}
 		return http.build();
 	}
 	// @formatter:on

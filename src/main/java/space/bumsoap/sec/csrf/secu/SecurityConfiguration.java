@@ -18,6 +18,8 @@ public class SecurityConfiguration implements WebMvcConfigurer {
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.httpBasic(Customizer.withDefaults());
+		http.addFilterAfter(
+				new CsrfLoggerFilter(), CsrfFilter.class);
 		return http.build();
 	}
 	// @formatter:on
